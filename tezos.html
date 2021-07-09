@@ -2,7 +2,43 @@
 <html>
 <head>
  <meta http-equiv="refresh" content="60">
+ <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+ <style>
+     .card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+  padding: 2px 16px;
+  background-color: aliceblue
+  }
+ </style>
 </head>  
-<div class="coinmarketcap-currency-widget" data-currencyid="2011" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-statsticker="true" data-stats="USD"></div>
-<script type="text/javascript" src="currency.js"></script>
+<body>    
+    <div style="height:100px;width:150px">
+    <div class="card">
+        <img src="tezosLogo.svg" alt="Avatar" style="height:100px;width:100px">
+        <div class="container">
+          <h4 style="font-size: large"><b>Tezos Price</b></h4>
+          <p id="BTCPrice" style="font-size: xx-large"></p>
+        </div>
+      </div>
+    </div>
+<script>
+$.getJSON("https://min-api.cryptocompare.com/data/price?fsym=XTZ&tsyms=USD", function(data){
+    $("#BTCPrice").text(data["USD"]);
+}).fail(function( dat, textStatus, error ) {
+    var err = textStatus + ", " + error;
+    alert(err);
+});
+</script>
+</body>
 </html>
