@@ -27,14 +27,46 @@
   margin-right: auto;
   width: 50%;
 }
+
+.move-area{/*normally use body*/
+  width: 20vw;
+  height: 2vh;  
+}
+.eyecontainer {
+  width: 100%;
+}
+.eye {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  background: #CCC;
+}
+.eye:after { /*pupil*/
+  position: absolute;
+  bottom: 17px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  content: " ";
+}
  </style>
 </head>  
 <body>    
     <div style="height:100px;width:150px">
     <div class="card">
         <br>
-        <img src="Tezoslogo.png" alt="Avatar" style="height:136px;width:100px;" class="center">
+        <img src="Tezoslogo.png" alt="Avatar" style="height:100px;width:100px;" class="center">
         <br>
+        <section class="move-area">
+            <div class='.eyecontainer center'>
+              <div class='eye'></div>
+              <div class='eye'></div>
+            </div>
+          </section>
         <div class="container">          
           <p id="BTCPrice" style="font-size: 40px"></p>
         </div>
@@ -46,6 +78,20 @@ $.getJSON("https://min-api.cryptocompare.com/data/price?fsym=XTZ&tsyms=USD", fun
 }).fail(function( dat, textStatus, error ) {
     var err = textStatus + ", " + error;
     alert(err);
+});
+
+$(".move-area").mousemove(function(event) {
+  var eye = $(".eye");
+  var x = (eye.offset().left) + (eye.width() / 2);
+  var y = (eye.offset().top) + (eye.height() / 2);
+  var rad = Math.atan2(event.pageX - x, event.pageY - y);
+  var rot = (rad * (180 / Math.PI) * -1) + 180;
+  eye.css({
+    '-webkit-transform': 'rotate(' + rot + 'deg)',
+    '-moz-transform': 'rotate(' + rot + 'deg)',
+    '-ms-transform': 'rotate(' + rot + 'deg)',
+    'transform': 'rotate(' + rot + 'deg)'
+  });
 });
 </script>
 </body>
