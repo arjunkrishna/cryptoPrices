@@ -11,6 +11,7 @@
       /* Add shadows to create the "card" effect */
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       transition: 0.3s;
+      width:400px;
     }
 
     /* On mouse-over, add a deeper shadow */
@@ -24,11 +25,12 @@
       font-size: 40px;
     }
 
-    .center {
-      display: block;
+    .eye-center {
+      display: inline-block;
       margin-left: auto;
       margin-right: auto;
       width: 100%;
+      text-align: center;
     }
 
     .eye {
@@ -58,12 +60,14 @@
   <div class="container">
 
     
-      <div>
-        <div class='eye'></div>
-        <div class='eye'></div>
-      </div>     
+        
     
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+      <div class="eye-center">
+        <div class='eye'></div>
+        <div class='eye'></div>        
+      </div>  
 
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -73,10 +77,10 @@
       </ol>
 
       <!-- Wrapper for slides -->
-      <div class="carousel-inner">
+      <div class="carousel-inner">        
         <div class="item active">
           <br>
-          <img src="tezos-xtz-logo.svg" alt="Tezos" style="height:400px; background-color: rgb(68, 54, 54);"
+          <img src="tezos-xtz-logo.svg" alt="Tezos" style="height:400px;width:700px; background-color: rgb(68, 54, 54);"
             class="center">
           <br>
           <div class="carousel-caption">
@@ -87,7 +91,7 @@
 
         <div class="item">
           <br>
-          <img src="BitcoinSign.svg" alt="Bitcoin" style="height:400px; background-color: rgb(68, 54, 54);"
+          <img src="BitcoinSign.svg" alt="Bitcoin" style="height:400px;width:700px;  background-color: rgb(68, 54, 54);"
             class="center">
           <br>
           <div class="carousel-caption">
@@ -98,7 +102,7 @@
 
         <div class="item">
           <br>
-          <img src="ethereum-eth-logo.svg" alt="Ethereum" style="height:400px; background-color: rgb(68, 54, 54);"
+          <img src="ethereum-eth-logo.svg" alt="Ethereum" style="height:400px; width:700px; background-color: rgb(68, 54, 54);"
             class="center">
           <br>
           <div class="carousel-caption">
@@ -106,7 +110,7 @@
             <p id="EthereumPrice" class="pricecontainer">LA is always so much fun!</p>
           </div>
         </div>
-      </div>
+      </div>      
     </div>
 
 
