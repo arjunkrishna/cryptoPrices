@@ -85,7 +85,7 @@
           <br>
           <div class="carousel-caption">
             <h3>Tezos (XTZ)</h3>
-            <p id="TezosPrice" class="pricecontainer">LA is always so much fun!</p>
+            <p id="TezosPrice" class="pricecontainer">XTZ Price Missing</p>
           </div>
         </div>
 
@@ -96,7 +96,7 @@
           <br>
           <div class="carousel-caption">
             <h3>Bitcoin (BTC)</h3>
-            <p id="BitcoinPrice" class="pricecontainer">LA is always so much fun!</p>
+            <p id="BitcoinPrice" class="pricecontainer">BTC Price Missing</p>
           </div>
         </div>
 
@@ -107,7 +107,7 @@
           <br>
           <div class="carousel-caption">
             <h3>Ethereum (ETH)</h3>
-            <p id="EthereumPrice" class="pricecontainer">LA is always so much fun!</p>
+            <p id="EthereumPrice" class="pricecontainer">ETH Price Missing</p>
           </div>
         </div>
       </div>      
@@ -141,6 +141,31 @@
           alert(err);
         });
       }
+
+      function ajaxCallCoinbase() {
+        $.getJSON("https://api.coinbase.com/v2/prices/XTZ-USD/spot", function (data) {
+          $("#TezosPrice").text("$" + data["USD"]["amount"]);
+        }).fail(function (dat, textStatus, error) {
+          var err = textStatus + ", " + error;
+          alert(err);
+        });
+
+        $.getJSON("https://api.coinbase.com/v2/prices/BTC-USD/spot", function (data) {
+          $("#BitcoinPrice").text("$" + data["USD"]["amount"]);
+        }).fail(function (dat, textStatus, error) {
+          var err = textStatus + ", " + error;
+          alert(err);
+        });
+
+        $.getJSON("https://api.coinbase.com/v2/prices/ETH-USD/spot", function (data) {
+          $("#EthereumPrice").text("$" + data["USD"]["amount"]);
+        }).fail(function (dat, textStatus, error) {
+          var err = textStatus + ", " + error;
+          alert(err);
+        });
+      }
+
+      
 
       $(".container").mousemove(function (event) {
         var eye = $(".eye");
